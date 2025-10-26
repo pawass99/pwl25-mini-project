@@ -13,8 +13,8 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(express.json()); // Body parser
-app.use(logRequest); // Logger middleware
+app.use(express.json());
+app.use(logRequest);
 
 // Routes
 app.get("/", (req, res) => {
@@ -33,10 +33,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/movies", require("./routes/movies"));
 
-// Error Handler (must be last)
 app.use(errorHandler);
 
-// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(
